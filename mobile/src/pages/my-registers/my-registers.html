@@ -1,0 +1,21 @@
+<!--
+  Generated template for the MyRegistersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Meus registros</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+    <ion-card *ngFor="let register of registers" (click)="openDetails(register.id)">
+        <img src="{{ register.images[0] ? 'http://supersustente.com.br/ss_api/public/storage/registerImages/' + register.images[0].path : 'assets/register-image.png'}}"/>
+        <div class="card-title">{{register.title}}</div>
+    </ion-card>
+</ion-content>

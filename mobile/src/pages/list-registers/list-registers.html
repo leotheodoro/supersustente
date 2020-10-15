@@ -1,0 +1,50 @@
+<!--
+  Generated template for the ListRegistersPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Todos os registros</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngFor="let register of registers" (click)="openDetails(register.id)">
+
+        <ion-item *ngIf="register.anonymous != 1">
+          <ion-avatar item-start>
+            <img src="{{register.user.image ? 'http://supersustente.com.br/ss_api/public/storage/users/' + register.user.image : 'assets/user-image.png'}}">
+          </ion-avatar>
+          <h2>{{register.user.name}}</h2>
+          <p>{{register.user.email}}</p>
+        </ion-item>
+        <ion-item *ngIf="register.anonymous == 1">
+          <h2><b>Anônimo</b></h2>
+        </ion-item>
+
+        <img src="{{ register.images[0] ? 'http://supersustente.com.br/ss_api/public/storage/registerImages/' + register.images[0].path : 'assets/register-image.png'}}"/>
+
+        <ion-card-content>
+          <p>{{register.description}}</p>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-start clear small>
+              <div>{{register.situation.name}}</div>
+            </button>
+          </ion-col>
+          <ion-col center text-center>
+            <ion-note>
+              {{formatDate(register.created_at)}}
+            </ion-note>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
+</ion-content>

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar hideBackButton color="primary">
+    <ion-title>
+      Super Sustente
+    </ion-title>
+    <ion-buttons end>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<div class="switch">
+  <button ion-button color="light" (click)="(switch = 'map'); resizeMap()" [class.active]="(switch == 'map')" icon-only><ion-icon name="map"></ion-icon></button>
+  <button ion-button color="light" (click)="(switch = 'list'); " [class.active]="(switch == 'list')" icon-only><ion-icon name="contact"></ion-icon></button>
+</div>
+
+<div class="currentitem" *ngIf="currentregional">
+  <button ion-item no-lines (click)="viewPlace(currentregional.title)">
+    <h2>{{ currentregional.title }}</h2>
+    <ion-note item-right icon-only><ion-icon name="ios-arrow-forward"></ion-icon></ion-note>
+  </button>
+</div>
+
+<ion-content color="primary">
+  <div [hidden]="!(switch == 'list')" margin-top>
+    <ion-list no-lines>
+      <ion-item (click)="profile()">
+        <ion-icon name="person" item-start color="primary"></ion-icon>
+        <h2>Perfil</h2>
+      </ion-item>
+      <ion-item (click)="listRegisters()">
+        <ion-icon name="paper" item-start color="primary"></ion-icon>
+        <h2>Registros</h2>
+      </ion-item>
+      <ion-item (click)="myRegisters()">
+        <ion-icon name="document" item-start color="primary"></ion-icon>
+        <h2>Meus registros</h2>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-icon name="log-out" item-start color="primary"></ion-icon>
+        <h2>Sair</h2>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="map" [class.hidemap]="!((switch == 'map') || error)">
+    <div class='container'>
+      <span class='pulse-button' (click)='createRegister()'>Fazer Registro</span>
+    </div>
+  </div>
+</ion-content>

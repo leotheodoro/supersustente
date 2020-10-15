@@ -1,0 +1,22 @@
+page-register {
+  #imageUserProfile {
+    display: block;
+  }
+
+  .circle-pic{
+    width:128px;
+    height:128px;
+    position: relative;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .circle-pic img {
+    width: 100%;
+    height: auto;
+  }
+}
